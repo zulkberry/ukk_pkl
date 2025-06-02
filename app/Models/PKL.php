@@ -1,29 +1,33 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Models;
 
-return new class extends Migration {
-    public function up(): void
+use Illuminate\Database\Eloquent\Model;
+
+class pkl extends Model
+{
+    protected $fillable = [
+        'industri_id',
+        'siswa_id',
+        'guru_id',
+        'mulai',
+        'selesai',
+    ];
+
+    public function siswa()
     {
-        Schema::create('pkls', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('siswa_id');
-            $table->unsignedBigInteger('industri_id');
-            $table->unsignedBigInteger('guru_id');
-            $table->date('mulai')->nullable();
-            $table->date('selesai')->nullable();
-            $table->timestamps();
-
-            $table->foreign('siswa_id')->references('id')->on('siswas')->onDelete('cascade');
-            $table->foreign('industri_id')->references('id')->on('industris')->onDelete('cascade');
-            $table->foreign('guru_id')->references('id')->on('gurus')->onDelete('cascade');
-        });
+        return $this->belongsTo(Siswa::class);
     }
 
-    public function down(): void
+    public function industri()
     {
-        Schema::dropIfExists('PKL');
+        return $this->belongsTo(Industri::class);
     }
-};
+
+    public function guru()
+    {
+        return $this->belongsTo(Guru::class);
+    }
+
+}
+

@@ -1,26 +1,22 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace App\Models;
 
-return new class extends Migration {
-    public function up(): void
-    {
-        Schema::create('gurus', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama');
-            $table->string('nip')->nullable();
-            $table->enum('gender', ['L', 'P']);
-            $table->string('alamat')->nullable();
-            $table->string('kontak')->nullable();
-            $table->string('email')->unique();
-            $table->timestamps();
-        });
-    }
+use Illuminate\Database\Eloquent\Model;
 
-    public function down(): void
+
+class Guru extends Model
+{
+    protected $fillable = [
+        'nip',
+        'nama',
+        'alamat',
+        'kontak',
+        'email',
+    ];
+
+    public function pkls()
     {
-        Schema::dropIfExists('gurus'); // <- sudah benar
+        return $this->hasMany(Pkl::class);
     }
-};
+}
