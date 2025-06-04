@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class check_user_role
 {
     /**
@@ -16,7 +17,7 @@ class check_user_role
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::check() && !Auth::user()->hasRole('siswa')) {
+        if (Auth::check() && !Auth::user()->hasRole('Siswa')) {
             abort(403, 'USER DOES NOT HAVE RIGHT ROLE');
         }
 

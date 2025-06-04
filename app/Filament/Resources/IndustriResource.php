@@ -2,20 +2,16 @@
 
 namespace App\Filament\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Industri;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Forms\Components\TextInput;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Forms\Components\FileUpload;
-use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\IndustriResource\Pages;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\IndustriResource\RelationManagers;
+use App\Models\Industri;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class IndustriResource extends Resource
 {
@@ -29,38 +25,23 @@ class IndustriResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('nama')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(100),
                 Forms\Components\TextInput::make('bidang_usaha')
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('alamat')
+                    ->maxLength(100),
+                Forms\Components\Textarea::make('alamat')
                     ->required()
-                    ->maxLength(255),
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('kontak')
                     ->required()
-                    ->numeric()
-                    ->mask('99999999')
-                    ->maxLength(255),
+                    ->maxLength(20),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(100),
                 Forms\Components\TextInput::make('website')
                     ->required()
                     ->maxLength(255),
-                FileUpload::make('foto')
-                    ->label('Foto')
-                    ->image()
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->directory('siswa-fotos')
-                    ->visibility('public')
-                    ->imagePreviewHeight('150')
-                    ->loadingIndicatorPosition('left')
-                    ->uploadProgressIndicatorPosition('left')
-                    ->removeUploadedFileButtonPosition('right')
-                    ->downloadable()
-                    ->openable()
-                    ->columnSpanFull(),
             ]);
     }
 
@@ -72,17 +53,11 @@ class IndustriResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('bidang_usaha')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('alamat')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('kontak')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('website')
-                    ->searchable(),
-                Tables\Columns\ImageColumn::make('foto')
-                    ->disk('public')
-                    ->height(50)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -114,15 +89,8 @@ class IndustriResource extends Resource
         ];
     }
 
-    public static function getNavigationLabel(): string
-    {
-        return 'Industri';
-    }
-
-    public static function getPluralLabel(): ?string
+    public static function getPluralModelLabel(): string 
     {
         return 'Data Industri';
     }
 }
-
-

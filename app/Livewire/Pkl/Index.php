@@ -2,42 +2,45 @@
 
 namespace App\Livewire\Pkl;
 
-use App\Models\Pkl;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\Pkl;
 
 class Index extends Component
 {
     use WithPagination;
 
-    public $search;
+    public $search = '';
+
+    // Reset halaman ke 1 saat search berubah
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
-        $query = Pkl::with(['siswa', 'guru', 'industri'])->orderBy('created_at', 'asc');
+        $query = Pkl::with(['siswa', 'industri', 'guru']);
 
-        if ($this->search !== null) {
-            $query->whereHas('siswa', function ($q) {
-                $q->where('nama', 'like', '%' . $this->search . '%');
-            })->orWhereHas('guru', function ($q) {
-                $q->where('nama', 'like', '%' . $this->search . '%');
-            })->orWhereHas('industri', function ($q) {
-                $q->where('nama', 'like', '%' . $this->search . '%');
+        if ($this->search !== '') {
+            $query->where(function ($q) {
+                $q->orWhereHas('siswa', function ($query) {
+                    $query->where('nama', 'like', '%' . $this->search . '%');
+                });
+                $q->orWhereHas('industri', function ($query) {
+                    $query->where('nama', 'like', '%' . $this->search . '%');
+                });
+                $q->orWhereHas('guru', function ($query) {
+                    $query->where('nama', 'like', '%' . $this->search . '%');
+                });
             });
+
         }
 
-        return view('livewire.pkl.index', [
-            'pkls' => $query->paginate(5),
-        ]);
+        $pkls = $query->paginate(3);
+
+        return view('livewire.pkl.index', compact('pkls'));
     }
 
-    public function destroy($id)
-    {
-        // Find the record and delete
-        $pkl = Pkl::findOrFail($id);
-        $pkl->delete();
 
-        // Optionally, you can add a session flash to notify the user
-        session()->flash('message', 'Data PKL berhasil di hapus!');
-    }
 }

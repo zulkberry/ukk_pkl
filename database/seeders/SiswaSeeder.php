@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Siswa;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class SiswaSeeder extends Seeder
 {
@@ -13,42 +13,106 @@ class SiswaSeeder extends Seeder
      */
     public function run(): void
     {
-        Siswa::insert([
+         $siswa = Siswa::insert([
             [
-                'nama' => 'Ginanta Arya Bramantya',
-                'nis' => '20401',
+                'nama' => 'ABU BAKAR TSABIT GHUFRON', 
+                'nis' => '20388',
                 'gender' => 'L',
-                'alamat' => 'Lamongan, Indonesia',
-                'kontak' => '08199887641',
-                'email' => 'eatingbrains@gmail.com',
-                'status' => false,
+                'alamat' => 'Sleman',
+                'kontak' => '085839328609',
+                'email' => '20388@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
             ],
             [
-                'nama' => 'Prana Waluya Jati',
-                'nis' => '20402',
-                'gender' => 'L',
-                'alamat' => 'Jogja, Indonesia',
-                'kontak' => '08123456789',
-                'email' => 'kwacjiseokk@gmail.com',
-                'status' => true,
+                'nama' => 'MUTIARA SEKAR KINASIH', 
+                'nis' => '20431',
+                'gender' => 'P',
+                'alamat' => 'Bantul',
+                'kontak' => '085198553807',
+                'email' => '20431@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
             ],
             [
-                'nama' => 'Garien Marsheel',
-                'nis' => '20421',
+                'nama' => 'ADE ZAIDAN ALTHAF', 
+                'nis' => '20390',
                 'gender' => 'L',
-                'alamat' => 'Malang, Indonesia',
-                'kontak' => '08214452210',
-                'email' => 'jiseokin@gmail.com',
-                'status' => false,
+                'alamat' => 'Gunungkidul',
+                'kontak' => '087786760589',
+                'email' => '20390@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
             ],
             [
-                'nama' => 'Harrieth Jericho',
-                'nis' => '20437',
+                'nama' => 'ANGELINA THITHIS SEKAR LANGIT', 
+                'nis' => '20396',
+                'gender' => 'P',
+                'alamat' => 'Kulonprogo',
+                'kontak' => '081272353535',
+                'email' => '20396@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
+            ],
+            [
+                'nama' => 'MARCELLINUS CHRISTO PRADIPTA', 
+                'nis' => '20422',
                 'gender' => 'L',
-                'alamat' => 'Ciamik, Indonesia',
-                'kontak' => '08156533244',
-                'email' => 'ejeongsu@gmail.com',
-                'status' => true,
+                'alamat' => 'Sleman',
+                'kontak' => '089688361696',
+                'email' => '20422@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
+            ],
+            [
+                'nama' => 'NAUFELIRNA SUBKHI RAMADHANI', 
+                'nis' => '20454',
+                'gender' => 'P',
+                'alamat' => 'Klaten',
+                'kontak' => '089671421234',
+                'email' => '20454@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
+            ],
+            [
+                'nama' => 'ROSYIDAH MUTHMAINNAH', 
+                'nis' => '20448',
+                'gender' => 'P',
+                'alamat' => 'Sleman',
+                'kontak' => '087883538770',
+                'email' => '20448@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
+            ],
+            [
+                'nama' => 'GABRIEL POSSENTI GENTA BAHANA NAGARI', 
+                'nis' => '20410',
+                'gender' => 'L',
+                'alamat' => 'Sleman',
+                'kontak' => '089634085990',
+                'email' => '20410@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
+            ],
+            [
+                'nama' => 'NAFISYA RHEA PRAYASTI', 
+                'nis' => '20411',
+                'gender' => 'P',
+                'alamat' => 'Bantul',
+                'kontak' => '08816752848',
+                'email' => '20411@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
+            ],
+            [
+                'nama' => 'FARCHA AMALIA NUGRAHAINI', 
+                'nis' => '20408',
+                'gender' => 'P',
+                'alamat' => 'Sleman',
+                'kontak' => '0895380761274',
+                'email' => '20408@gmail.com',
+                'status_lapor_pkl'=> false,
+                'foto'=>'null',
             ],
         ]);
     }

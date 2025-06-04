@@ -15,7 +15,7 @@ class PklPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_p::k::l');
+        return $user->can('view_any_pkl');
     }
 
     /**
@@ -23,7 +23,7 @@ class PklPolicy
      */
     public function view(User $user, Pkl $pkl): bool
     {
-        return $user->can('view_p::k::l');
+        return $user->can('view_pkl');
     }
 
     /**
@@ -31,7 +31,7 @@ class PklPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_p::k::l');
+        return $user->can('create_pkl');
     }
 
     /**
@@ -39,7 +39,7 @@ class PklPolicy
      */
     public function update(User $user, Pkl $pkl): bool
     {
-        return $user->can('update_p::k::l');
+        return $user->can('update_pkl');
     }
 
     /**
@@ -47,7 +47,7 @@ class PklPolicy
      */
     public function delete(User $user, Pkl $pkl): bool
     {
-        return $user->can('delete_p::k::l');
+        return $user->can('delete_pkl');
     }
 
     /**
@@ -55,7 +55,7 @@ class PklPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_p::k::l');
+        return $user->can('delete_any_pkl');
     }
 
     /**
@@ -63,7 +63,7 @@ class PklPolicy
      */
     public function forceDelete(User $user, Pkl $pkl): bool
     {
-        return $user->can('force_delete_p::k::l');
+        return $user->can('force_delete_pkl');
     }
 
     /**
@@ -71,7 +71,7 @@ class PklPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_p::k::l');
+        return $user->can('force_delete_any_pkl');
     }
 
     /**
@@ -79,7 +79,7 @@ class PklPolicy
      */
     public function restore(User $user, Pkl $pkl): bool
     {
-        return $user->can('restore_p::k::l');
+        return $user->can('restore_pkl');
     }
 
     /**
@@ -87,7 +87,7 @@ class PklPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_p::k::l');
+        return $user->can('restore_any_pkl');
     }
 
     /**
@@ -95,7 +95,7 @@ class PklPolicy
      */
     public function replicate(User $user, Pkl $pkl): bool
     {
-        return $user->can('replicate_p::k::l');
+        return $user->can('replicate_pkl');
     }
 
     /**
@@ -103,6 +103,6 @@ class PklPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_p::k::l');
+        return $user->can('reorder_pkl');
     }
 }

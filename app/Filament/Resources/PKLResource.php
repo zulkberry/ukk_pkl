@@ -23,30 +23,17 @@ class PklResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('industri_id')
-                    ->relationship('industri', 'nama')
-                    ->label('Industri')
-                    ->columnSpanFull()
-                    ->searchable()
-                    ->preload()
-                    ->options(\App\Models\Industri::all()->pluck('nama', 'id'))
-                    ->placeholder('Pilih Industri')
-                    ->required(),
                 Forms\Components\Select::make('siswa_id')
-                    ->relationship('siswa', 'nama')
-                    ->searchable()
-                    ->preload()
-                    ->label('Siswa')
+                    ->label('Nama Siswa')
                     ->options(\App\Models\Siswa::all()->pluck('nama', 'id'))
-                    ->placeholder('Pilih Siswa')
+                    ->required(),
+                Forms\Components\Select::make('industri_id')
+                    ->label('Nama Industri')
+                    ->options(\App\Models\Industri::all()->pluck('nama', 'id'))
                     ->required(),
                 Forms\Components\Select::make('guru_id')
-                    ->relationship('guru', 'nama')
-                    ->searchable()
-                    ->preload()
-                    ->label('Guru')
+                    ->label('Guru Pembimbing')
                     ->options(\App\Models\Guru::all()->pluck('nama', 'id'))
-                    ->placeholder('Pilih Guru')
                     ->required(),
                 Forms\Components\DatePicker::make('mulai')
                     ->required(),
@@ -59,14 +46,16 @@ class PklResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('siswa.nama')->label('Siswa')
-                    ->numeric()
+                Tables\Columns\TextColumn::make('siswa.nama')
+                    ->label('Nama Siswa')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('guru.nama')->label('Guru')
-                    ->numeric()
+
+                Tables\Columns\TextColumn::make('industri.nama')
+                    ->label('Nama Industri')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('industri.nama')->label('Industri')
-                    ->numeric()
+
+                Tables\Columns\TextColumn::make('guru.nama')
+                    ->label('Guru Pembimbing')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('mulai')
                     ->date()
@@ -104,15 +93,8 @@ class PklResource extends Resource
         ];
     }
 
-    public static function getNavigationLabel(): string
-    {
-        return 'Data PKL';
-    }
-
-    public static function getPluralLabel(): ?string
+    public static function getPluralModelLabel(): string
     {
         return 'Data PKL';
     }
 }
-
-

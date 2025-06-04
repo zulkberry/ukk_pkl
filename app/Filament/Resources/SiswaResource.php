@@ -10,7 +10,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Filament\Forms\Components\FileUpload;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -18,7 +17,7 @@ class SiswaResource extends Resource
 {
     protected static ?string $model = Siswa::class;
 
-    protected static ?string $navigationIcon = 'heroicon-s-pencil-square';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
     public static function form(Form $form): Form
     {
@@ -26,55 +25,34 @@ class SiswaResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('nama')
                     ->required()
-                    ->maxLength(255),
+                    ->maxLength(100),
                 Forms\Components\TextInput::make('nis')
                     ->label('NIS')
                     ->required()
-                    ->numeric()
-                    ->mask('99999999')  
-                    ->maxLength(255),
+                    ->maxLength(10),
                 Forms\Components\Select::make('gender')
                     ->label('Gender')
                     ->options([
                         'L' => 'Laki-laki',
                         'P' => 'Perempuan',
                     ])
-                    ->placeholder('Jenis Kelamin')
                     ->required(),
-                Forms\Components\Select::make('status')
-                    ->label('Status PKL')
-                    ->options([
-                        1 => 'Sudah PKL',
-                        0 => 'Belum PKL',
-                    ])
-                    ->placeholder('Status PKL')
-                    ->required(),
+                Forms\Components\Textarea::make('alamat')
+                    ->required()
+                    ->columnSpanFull(),
                 Forms\Components\TextInput::make('kontak')
                     ->required()
-                    ->numeric()
-                    ->mask('99999999999')
-                    ->maxLength(255),
+                    ->maxLength(20),
                 Forms\Components\TextInput::make('email')
                     ->email()
                     ->required()
-                    ->maxLength(255),
-                Forms\Components\TextArea::make('alamat')
-                    ->required()
-                    ->columnSpanFull()
-                    ->maxLength(255),
-                FileUpload::make('foto')
-                    ->label('Foto Siswa')
+                    ->maxLength(100),
+                Forms\Components\Toggle::make('status_lapor_pkl')
+                    ->required(),
+                Forms\Components\FileUpload::make('foto')
+                    ->label('Foto')
                     ->image()
-                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                    ->directory('siswa-fotos')
-                    ->visibility('public')
-                    ->imagePreviewHeight('150')
-                    ->loadingIndicatorPosition('left')
-                    ->uploadProgressIndicatorPosition('left')
-                    ->removeUploadedFileButtonPosition('right')
-                    ->downloadable()
-                    ->openable()
-                    ->columnSpanFull(),
+                    ->directory('foto_siswa'),
             ]);
     }
 
@@ -86,19 +64,22 @@ class SiswaResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nis')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('gender'),
-                Tables\Columns\TextColumn::make('alamat')
-                    ->searchable(),
+                Tables\Columns\BadgeColumn::make('gender')
+                    ->label('Gender')
+                    ->colors([
+                        'info' => 'L', 
+                        'danger' => 'P', 
+                    ]),
                 Tables\Columns\TextColumn::make('kontak')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\IconColumn::make('status')
+                Tables\Columns\IconColumn::make('status_lapor_pkl')
                     ->boolean(),
                 Tables\Columns\ImageColumn::make('foto')
+                    ->label('Foto')
                     ->disk('public')
-                    ->height(50)
-                    ->searchable(),
+                    ->circular(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -113,7 +94,10 @@ class SiswaResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                //Tables\Actions\DeleteAction::make(),
+                //menyembuntikan tombol delete
+                 Tables\Actions\DeleteAction::make()
+                     ->hidden(fn($record) => $record->pkls()->exists()),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -129,12 +113,7 @@ class SiswaResource extends Resource
         ];
     }
 
-    public static function getNavigationLabel(): string
-    {
-        return 'Siswa';
-    }
-
-    public static function getPluralLabel(): ?string
+    public static function getPluralModelLabel(): string
     {
         return 'Data Siswa';
     }
