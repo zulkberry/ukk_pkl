@@ -18,7 +18,7 @@
                 </div> -->
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('industri') }}" :active="request()->routeIs('industri')">
+                    <x-nav-link href="{{ route('industri.index') }}" :active="request()->routeIs('industri.index')">
                         {{ __('Data Industri') }}
                     </x-nav-link>
                 </div>
