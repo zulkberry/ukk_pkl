@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Livewire\Pkl\Index as PklIndex;
-use App\Livewire\Pkl\Create as PklCreate;
+use App\Livewire\Pkl\create as PklCreate;
 use App\Livewire\Industri\Index as IndustriIndex;
 use App\Livewire\Industri\Create as IndustriCreate;
 
@@ -16,7 +16,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
     'role:siswa|guru',
-    
+
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/pkls', PklIndex::class)->name('pkl.index');
