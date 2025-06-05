@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Filament\Resources;
+namespace App\Filament\Resources;
 
-use app\Filament\Resources\PklResource\Pages;
-use app\Filament\Resources\PklResource\RelationManagers;
-use app\Models\Pkl;
+use App\Filament\Resources\PKLResource\Pages;
+use App\Filament\Resources\PKLResource\RelationManagers;
+use App\Models\PKL;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -25,15 +25,15 @@ class PklResource extends Resource
             ->schema([
                 Forms\Components\Select::make('siswa_id')
                     ->label('Nama Siswa')
-                    ->options(\app\Models\Siswa::all()->pluck('nama', 'id'))
+                    ->options(\App\Models\Siswa::all()->pluck('nama', 'id'))
                     ->required(),
                 Forms\Components\Select::make('industri_id')
                     ->label('Nama Industri')
-                    ->options(\app\Models\Industri::all()->pluck('nama', 'id'))
+                    ->options(\App\Models\Industri::all()->pluck('nama', 'id'))
                     ->required(),
                 Forms\Components\Select::make('guru_id')
                     ->label('Guru Pembimbing')
-                    ->options(\app\Models\Guru::all()->pluck('nama', 'id'))
+                    ->options(\App\Models\Guru::all()->pluck('nama', 'id'))
                     ->required(),
                 Forms\Components\DatePicker::make('mulai')
                     ->required(),

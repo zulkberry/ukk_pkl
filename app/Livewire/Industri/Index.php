@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Livewire\Industri;
+namespace App\Livewire\Industri;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use app\Models\Industri;
+use App\Models\Industri;
 
 class Index extends Component
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Models;
+namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -46,11 +46,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * The accessors to append to the model's array form.
+     * The accessors to Append to the model's array form.
      *
      * @var array<int, string>
      */
-    protected $appends = [
+    protected $Appends = [
         'profile_photo_url',
     ];
 

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use app\Models\Industri;
+use App\Models\Industri;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 

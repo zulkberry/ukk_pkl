@@ -1,10 +1,10 @@
 <?php
 
-namespace app\Livewire\Pkl;
+namespace App\Livewire\Pkl;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use app\Models\Pkl;
+use App\Models\Pkl;
 
 class Index extends Component
 {
