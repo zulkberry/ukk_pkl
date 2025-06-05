@@ -16,6 +16,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
     'role:siswa|guru',
+    
 ])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/pkls', PklIndex::class)->name('pkl.index');
