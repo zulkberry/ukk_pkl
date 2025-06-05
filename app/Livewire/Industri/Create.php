@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Industri;
+namespace app\Livewire\Industri;
 
 use Livewire\Component;
 class Create extends Component

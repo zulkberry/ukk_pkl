@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Siswa;
+use app\Models\Siswa;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 

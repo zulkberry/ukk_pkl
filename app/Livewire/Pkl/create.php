@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Livewire\Pkl;
+namespace app\Livewire\Pkl;
 
 use Livewire\Component;
-use App\Models\Siswa;
-use App\Models\Industri;
-use App\Models\Pkl;
+use app\Models\Siswa;
+use app\Models\Industri;
+use app\Models\Pkl;
 use Illuminate\Support\Facades\Auth;
 
 class Create extends Component

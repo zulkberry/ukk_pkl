@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace app\Filament\Resources;
 
-use App\Filament\Resources\GuruResource\Pages;
-use App\Filament\Resources\GuruResource\RelationManagers;
-use App\Models\Guru;
+use app\Filament\Resources\GuruResource\Pages;
+use app\Filament\Resources\GuruResource\RelationManagers;
+use app\Models\Guru;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

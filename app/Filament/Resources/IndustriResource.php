@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace app\Filament\Resources;
 
-use App\Filament\Resources\IndustriResource\Pages;
-use App\Filament\Resources\IndustriResource\RelationManagers;
-use App\Models\Industri;
+use app\Filament\Resources\IndustriResource\Pages;
+use app\Filament\Resources\IndustriResource\RelationManagers;
+use app\Models\Industri;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

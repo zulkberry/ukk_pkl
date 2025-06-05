@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace app\Filament\Resources;
 
-use App\Filament\Resources\SiswaResource\Pages;
-use App\Filament\Resources\SiswaResource\RelationManagers;
-use App\Models\Siswa;
+use app\Filament\Resources\SiswaResource\Pages;
+use app\Filament\Resources\SiswaResource\RelationManagers;
+use app\Models\Siswa;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
