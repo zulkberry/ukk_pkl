@@ -1,23 +1,25 @@
 <?php
 
-use App\livewire\Industri\Index as IndustriIndex;
-use App\Livewire\Pkl\Index as PklIndex;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Livewire\Pkl\Index as PklIndex;
+use App\Livewire\Pkl\Create as PklCreate;
+use App\Livewire\Industri\Index as IndustriIndex;
+use App\Livewire\Industri\Create as IndustriCreate;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-    'role:siswa|guru', // ⬅️ hanya siswa atau guru yang boleh masuk
+    'role:siswa|guru',
 ])->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');;
-    Route::get('/pkls', \App\Livewire\Pkl\Index::class)->name('pkl.index');
-    Route::get('/pkl/create', \App\Livewire\Pkl\Create::class)->name('pkl.create');
-    Route::get('/industris', \App\Livewire\Industri\Index::class)->name('industri.index');
-    Route::get('/industri/create', \App\Livewire\Industri\Create::class)->name('industri.create');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/pkls', PklIndex::class)->name('pkl.index');
+    Route::get('/pkl/create', PklCreate::class)->name('pkl.create');
+    Route::get('/industris', IndustriIndex::class)->name('industri.index');
+    Route::get('/industri/create', IndustriCreate::class)->name('industri.create');
 });
