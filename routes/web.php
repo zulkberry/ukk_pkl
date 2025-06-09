@@ -11,7 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth', 'verified', 'check_user_email', 'ensure_user_has_role'])
+Route::middleware(['auth', 'verified', 'check_user_email', 'check_user_role'])
     ->group(function () {
         Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
     });
