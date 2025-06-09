@@ -17,7 +17,11 @@ Route::middleware(['auth', 'verified', 'check_user_email', 'check_user_role'])
     });
 
 
-Route::name('nm_folder.')->group(function () {
-    Route::get('/pkls', PklIndex::class)->name('pkl.index');
-    Route::get('/industris', IndustriIndex::class)->name('industri.index');
+    Route::name('Industri.')->group(function () {
+        Route::get('/industris', IndustriIndex::class)->name('industri.index');
 });
+
+Route::name('Pkl.')->group(function () {
+    Route::get('/pkls', PklIndex::class)->name('pkl.index');
+});
+
