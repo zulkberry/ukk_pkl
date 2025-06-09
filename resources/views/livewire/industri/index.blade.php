@@ -53,7 +53,6 @@
                             <td class="px-6 py-4 font-medium text-gray-900">{{ $indus->website }}</td>
                             <!-- <td class="px-6 py-4 text-center">
                                 <a href="{{ route('industri.index') }}"> class="text-blue-600 hover:underline">Edit</a> |
-                                <form action="{{ route('industris', $indus->id) }}" method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
                                      <button type="submit" class="text-red-600 hover:underline">Delete</button>

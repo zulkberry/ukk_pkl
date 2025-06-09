@@ -9,6 +9,6 @@ class Industri extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'nama', 'nip', 'bidang_usaha', 'alamat', 'kontak', 'email', 'website'
+        'nama', 'nip', 'bidang_usaha', 'alamat', 'kontak', 'email', 'website', 'foto',
     ];
 }

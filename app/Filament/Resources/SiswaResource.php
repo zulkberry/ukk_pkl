@@ -47,7 +47,7 @@ class SiswaResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(100),
-                Forms\Components\Toggle::make('status_lapor_pkl')
+                Forms\Components\Toggle::make('status')
                     ->required(),
                 Forms\Components\FileUpload::make('foto')
                     ->label('Foto')

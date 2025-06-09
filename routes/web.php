@@ -11,16 +11,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-    'role:siswa|guru',
+Route::middleware(['auth', 'verified', 'check_user_email', 'ensure_user_has_role'])
+    ->group(function () {
+        Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+    });
 
-])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::name('nm_folder.')->group(function () {
     Route::get('/pkls', PklIndex::class)->name('pkl.index');
-    Route::get('/pkl/create', PklCreate::class)->name('pkl.create');
     Route::get('/industris', IndustriIndex::class)->name('industri.index');
-    Route::get('/industri/create', IndustriCreate::class)->name('industri.create');
 });
