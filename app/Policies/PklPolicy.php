@@ -3,10 +3,10 @@
 namespace App\Policies;
 
 use App\Models\User;
-use App\Models\Pkl;
+use App\Models\PKL;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class PklPolicy
+class PKLPolicy
 {
     use HandlesAuthorization;
 
@@ -21,7 +21,7 @@ class PklPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Pkl $pkl): bool
+    public function view(User $user, PKL $pKL): bool
     {
         return $user->can('view_pkl');
     }
@@ -37,7 +37,7 @@ class PklPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Pkl $pkl): bool
+    public function update(User $user, PKL $pKL): bool
     {
         return $user->can('update_pkl');
     }
@@ -45,7 +45,7 @@ class PklPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Pkl $pkl): bool
+    public function delete(User $user, PKL $pKL): bool
     {
         return $user->can('delete_pkl');
     }
@@ -61,7 +61,7 @@ class PklPolicy
     /**
      * Determine whether the user can permanently delete.
      */
-    public function forceDelete(User $user, Pkl $pkl): bool
+    public function forceDelete(User $user, PKL $pKL): bool
     {
         return $user->can('force_delete_pkl');
     }
@@ -77,7 +77,7 @@ class PklPolicy
     /**
      * Determine whether the user can restore.
      */
-    public function restore(User $user, Pkl $pkl): bool
+    public function restore(User $user, PKL $pKL): bool
     {
         return $user->can('restore_pkl');
     }
@@ -93,7 +93,7 @@ class PklPolicy
     /**
      * Determine whether the user can replicate.
      */
-    public function replicate(User $user, Pkl $pkl): bool
+    public function replicate(User $user, PKL $pKL): bool
     {
         return $user->can('replicate_pkl');
     }
